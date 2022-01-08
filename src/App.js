@@ -32,13 +32,26 @@ const firestore = firebase.firestore();
 
 
 function App() {
+  //user will be an object when signed in null when signed out and it 
+  const [user] = useAuthState(auth);
   return (
     <div className="App">
       <header className="App-header">
        
       </header>
+
+      <section>
+        {user ? <ChatRoom/> : <SignIn/>}
+      </section>
     </div>
   );
 }
 
+function SignIn(){
+
+}
+
+function ChatRoom(){
+  
+}
 export default App;
