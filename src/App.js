@@ -51,10 +51,21 @@ function App() {
 function SignIn(){
   const signInWithGoogle= ()=>{
       console.log("signin button worked");
+      
+      const provider = firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider);
+    
   }
 
   return(
     <button onClick={signInWithGoogle}> Sign in using Google</button>
+  )
+}
+
+function SignOut(){
+  return auth.currentUser && (
+    
+    <button onClick={()=> auth.signOut()}> Sign Out </button>
   )
 }
 
