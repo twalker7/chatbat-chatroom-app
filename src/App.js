@@ -70,6 +70,18 @@ function SignOut(){
 }
 
 function ChatRoom(){
+  const messagesRef = firestone.collection('messages');
+  const query = messagesRef.orderBy('createdAt').limit(25);
 
+  //react will rerender wheneber this data is changed
+   const [messages] = usecollectionData(query, {idField: 'id'});
+
+   return(
+     <>
+        <div>
+          {messages && messages.map(msg=> <ChatMessage key={msg.id} message={msg}/>)}
+        </div>
+     </>
+   )
 }
 export default App;
