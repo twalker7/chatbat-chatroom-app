@@ -48,8 +48,12 @@ function App() {
 }
 
 function SignIn(){
+  const signInWithGoogle= ()=>{
+
+  }
+
   return(
-    <Button onClick={}> Sign in using Google</Button>
+    <button onClick={signInWithGoogle}> Sign in using Google</button>
   )
 }
 
