@@ -48,10 +48,12 @@ function App() {
 }
 
 function SignIn(){
-
+  return(
+    <Button onClick={}> Sign in using Google</Button>
+  )
 }
 
 function ChatRoom(){
-  
+
 }
 export default App;
