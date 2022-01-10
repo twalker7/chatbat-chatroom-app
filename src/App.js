@@ -6,6 +6,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
+
 import {useAuthState} from 'react-firebase-hooks/auth';
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 
@@ -22,6 +23,7 @@ firebase.initializeApp({
 
 
 });
+
 
 
 //we make these firebase SDK's global variables 
@@ -52,7 +54,7 @@ function SignIn(){
   const signInWithGoogle= ()=>{
       console.log("signin button worked");
       
-      const provider = firebase.auth.GoogleAuthProvider();
+      const provider = new firebase.auth.GoogleAuthProvider();
       auth.signInWithPopup(provider);
     
   }
@@ -70,11 +72,11 @@ function SignOut(){
 }
 
 function ChatRoom(){
-  const messagesRef = firestone.collection('messages');
+  const messagesRef = firebase.collection('messages');
   const query = messagesRef.orderBy('createdAt').limit(25);
 
   //react will rerender wheneber this data is changed
-   const [messages] = usecollectionData(query, {idField: 'id'});
+   const [messages] = useCollectionData(query, {idField: 'id'});
 
    return(
      <>
@@ -83,5 +85,14 @@ function ChatRoom(){
         </div>
      </>
    )
+}
+
+function ChatMessage(props){
+  const {text, uid} = props.message;
+
+  const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
+  return(
+   <p>{text}</p>
+  )
 }
 export default App;
