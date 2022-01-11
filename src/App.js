@@ -52,7 +52,7 @@ function App() {
 
 function SignIn(){
   const signInWithGoogle= ()=>{
-      console.log("signin button worked");
+      console.log("signin button worked?");
       
       const provider = new firebase.auth.GoogleAuthProvider();
       auth.signInWithPopup(provider);
@@ -75,13 +75,13 @@ function ChatRoom(){
   const messagesRef = firebase.collection('messages');
   const query = messagesRef.orderBy('createdAt').limit(25);
 
-  //react will rerender wheneber this data is changed
+  //react will rerender whenever this data is changed
    const [messages] = useCollectionData(query, {idField: 'id'});
 
    return(
      <>
         <div>
-          {messages && messages.map(msg=> <ChatMessage key={msg.id} message={msg}/>)}
+          {messages && messages.map(m=> <ChatMessage key={m.id} message={m}/>)}
         </div>
      </>
    )
