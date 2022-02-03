@@ -72,7 +72,7 @@ function SignOut(){
 }
 
 function ChatRoom(){
-  const messagesRef = firebase.collection('messages');
+  const messagesRef = firestore.collection('messages');
   const query = messagesRef.orderBy('createdAt').limit(25);
 
   //react will rerender whenever this data is changed
