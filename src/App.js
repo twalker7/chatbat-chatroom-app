@@ -75,10 +75,12 @@ function ChatRoom(){
 
    return(
      <>
-     <SignOut/>
+     
+     <div> This test element works. so why is there no query displayed</div>
         <div>
           {messages && messages.map(m=> <ChatMessage key={m.id} message={m}/>)}
         </div>
+        <SignOut/>
      </>
    )
 }
