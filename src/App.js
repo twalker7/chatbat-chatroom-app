@@ -64,12 +64,7 @@ function SignIn(){
   )
 }
 
-function SignOut(){
-  return auth.currentUser && (
-    
-    <button onClick={()=> auth.signOut()}> Sign Out </button>
-  )
-}
+
 
 function ChatRoom(){
   const messagesRef = firestore.collection('messages');
@@ -80,6 +75,7 @@ function ChatRoom(){
 
    return(
      <>
+     <SignOut/>
         <div>
           {messages && messages.map(m=> <ChatMessage key={m.id} message={m}/>)}
         </div>
@@ -93,6 +89,13 @@ function ChatMessage(props){
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
   return(
    <p>{text}</p>
+  )
+}
+
+function SignOut(){
+  return auth.currentUser && (
+
+    <button onClick={()=> auth.signOut()}> Sign Out </button>
   )
 }
 export default App;
